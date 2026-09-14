@@ -136,9 +136,6 @@ REST_FRAMEWORK = {
         'rest_framework_simplejwt.authentication.JWTAuthentication',
     ],
     'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
-    # 'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
-    # 'DEFAULT_PAGINATION_CLASS': 'ResearchAssistant.core.pagination.InquiryPagination',
-    # 'PAGE_SIZE': 20,
 }
 
 SIMPLE_JWT = {

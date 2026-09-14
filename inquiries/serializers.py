@@ -3,8 +3,8 @@ from .models import InquiriesRequest, InquiryStep
 
 
 class InquiriesRequestSerializer(serializers.ModelSerializer):
-    created = serializers.DateTimeField(format="%d/%m/%Y - %H:%M")
-    updated = serializers.DateTimeField(format="%d/%m/%Y - %H:%M")
+    created = serializers.DateTimeField(read_only=True, format="%d/%m/%Y - %H:%M")
+    updated = serializers.DateTimeField(read_only=True, format="%d/%m/%Y - %H:%M")
 
     class Meta:
         model = InquiriesRequest
