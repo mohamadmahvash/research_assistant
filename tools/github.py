@@ -16,6 +16,11 @@ class GithubTool(BaseResearchTool):
             "project",
             "library",
             "package",
+            "گیت هاب",
+            "ریپو",
+            "ریپوزیتوری",
+            "پکیج",
+            "گیت",
         ]
         query = query.lower()
 
@@ -26,9 +31,7 @@ class GithubTool(BaseResearchTool):
 
     def execute(self, query: str):
         data = self.client.search_repositories(query)
-
         repositories = []
-
         for item in data["items"]:
             repositories.append(
                 {
