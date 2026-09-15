@@ -33,17 +33,32 @@ class GithubClient:
 class BooksClient:
     BASE_URL = "https://books.toscrape.com"
 
+    def clean_query(self, query):
+
+        stop_words = [
+            "find",
+            "a",
+            "book",
+            "that",
+            "name",
+            "is",
+            "the",
+        ]
+
+        words = query.lower().split()
+
+        return [
+            word
+            for word in words
+            if word not in stop_words
+        ]
+
     def parse_books(self, html, query):
 
-        soup = BeautifulSoup(
-            html,
-            "lxml"
-        )
+        soup = BeautifulSoup(html,"lxml")
 
-        keywords = query.lower().split()
-
-        matched_books = []
-        all_books = []
+        keywords = self.clean_query(query)
+        results = []
 
         for item in soup.select(
                 "article.product_pod"
@@ -51,25 +66,25 @@ class BooksClient:
 
             title = item.h3.a["title"]
 
-            book = {
-                "title": title,
-                "price": item.select_one(
-                    ".price_color"
-                ).text,
-                "rating": item.p["class"][1],
-            }
-
-            all_books.append(book)
-
             title_lower = title.lower()
 
-            if any(
+            if keywords and not all(
                     word in title_lower
                     for word in keywords
             ):
-                matched_books.append(book)
+                continue
 
-        return matched_books or all_books
+            results.append(
+                {
+                    "title": title,
+                    "price": item.select_one(
+                        ".price_color"
+                    ).text,
+                    "rating": item.p["class"][1],
+                }
+            )
+
+        return results
 
     def search_books(self, query):
         try:

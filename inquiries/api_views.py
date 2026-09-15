@@ -32,6 +32,7 @@ class InquiriesRequestListAPIView(APIView):
 
     def get(self, request):
         researches = get_inquiry_by_user(user=request.user)
+        self.check_object_permissions(request, researches)
 
         paginator = InquiryPagination()
         paginated_queryset = paginator.paginate_queryset(researches, request)
@@ -46,6 +47,7 @@ class InquiriesRequestDetailAPIView(APIView):
     def get(self, request, pk):
         try:
             research = get_inquiry_by_id_user(u_id=pk, user=request.user)
+            self.check_object_permissions(request, research)
         except InquiriesRequest.DoesNotExist:
             raise NotFound("Research request not found")
 
