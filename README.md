@@ -95,7 +95,7 @@ Run development server: python manage.py runserver
 
 ---
 
-Running Tests
+# Running Tests
 
 Run all tests: python manage.py test
 
