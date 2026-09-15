@@ -12,6 +12,7 @@ class GithubTool(BaseResearchTool):
         keywords = [
             "github",
             "repo",
+            "repos",
             "repository",
             "project",
             "library",

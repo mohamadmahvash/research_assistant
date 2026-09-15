@@ -13,6 +13,7 @@ class BooksTool(BaseResearchTool):
             "book",
             "books",
             "کتاب",
+            "کتاب ها",
         ]
 
         query = query.lower()

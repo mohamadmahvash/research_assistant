@@ -19,3 +19,12 @@ class UserRegisterSerializer(serializers.Serializer):
         if user:
             raise serializers.ValidationError("Email already registered")
         return value
+
+    def validate_username(self, value):
+        if value == "admin":
+            raise serializers.ValidationError("username can not be admin")
+        return value
+
+
+class ChangePasswordSerializer(serializers.Serializer):
+    new_password = serializers.CharField()

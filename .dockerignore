@@ -1,0 +1,34 @@
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+
+
+# Virtual environment
+venv/
+env/
+.venv/
+
+
+# Environment files
+.env
+
+
+# Git
+.git/
+.gitignore
+
+
+# IDE
+.vscode/
+.idea/
+
+
+# Django
+*.log
+db.sqlite3
+
+
+# OS files
+.DS_Store
+Thumbs.db

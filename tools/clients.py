@@ -42,7 +42,6 @@ class BooksClient:
             "that",
             "name",
             "is",
-            "the",
         ]
 
         words = query.lower().split()
@@ -55,14 +54,12 @@ class BooksClient:
 
     def parse_books(self, html, query):
 
-        soup = BeautifulSoup(html,"lxml")
+        soup = BeautifulSoup(html, "lxml")
 
         keywords = self.clean_query(query)
         results = []
 
-        for item in soup.select(
-                "article.product_pod"
-        ):
+        for item in soup.select("article.product_pod"):
 
             title = item.h3.a["title"]
 
